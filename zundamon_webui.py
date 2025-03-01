@@ -167,3 +167,11 @@ with tabs[0]:
     if st.session_state.audio_bytes is not None:
         st.audio(st.session_state.audio_bytes, format="audio/wav")
         st.download_button("Download Generated Audio", st.session_state.audio_bytes, file_name="output.wav", mime="audio/wav")
+        
+    app.queue().launch(#concurrency_count=511, max_size=1022
+        server_name="0.0.0.0",
+        inbrowser=True,
+        share=is_share,
+        server_port=webui_port_main,
+        quiet=True,
+    )
